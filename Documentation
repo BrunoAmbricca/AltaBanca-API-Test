@@ -1,0 +1,126 @@
+Documentacion de la API de AltaBanca de Clientes.
+
+EndPoints Disponibles:
+
+1-Obtener todos los registros de la tabla Clientes
+
+EndPoint: GET /Customer/GetAll
+
+Este EndPoint devuelve una lista de todos los clientes registrados.
+
+La respuesta de este EndPoint contiene una lista de objetos que cada uno representa un cliente. Cada objeto contiene los siguentes campos:
+
+"CustomerId", tipo: int - Identificador del cliente.
+"Names", tipo: string - Nombre/s del cliente.
+"Surnames", tipo: string - Apellido/s del cliente.
+"Birthday", tipo: datetime - Fecha de nacimiento del cliente.
+"CUIT", tipo: string - CUIT del cliente.
+"Address", tipo: string - Direccion del cliente.
+"Cellphone", tipo: string - Numero de celular del cliente.
+"Email", tipo: string - Direccion de email del cliente.
+
+Tipos de respuestas: Status200Ok
+
+
+2-Obtener un registro por Id
+
+EndPoint: GET /Customer/GetById?customerId={customerId}
+
+Este EndPoint devuelve un cliente con el identificador especificado.
+
+Parametros de consulta:
+"customerId", tipo:int (Obligatorio) - Identificador de cliente.
+
+La respuesta de este EndPoint contiene los siguentes campos:
+
+"CustomerId", tipo: int - Identificador del cliente.
+"Names", tipo: string - Nombre/s del cliente.
+"Surnames", tipo: string - Apellido/s del cliente.
+"Birthday", tipo: datetime - Fecha de nacimiento del cliente.
+"CUIT", tipo: string - CUIT del cliente.
+"Address", tipo: string - Direccion del cliente.
+"Cellphone", tipo: string - Numero de celular del cliente.
+"Email", tipo: string - Direccion de email del cliente.
+
+Tipos de respuestas: Status200Ok
+
+
+3-Búsqueda por nombre
+
+EndPoint: GET /Customer/Search?customerName={customerName}
+
+Este EndPoint devuelve una lista de cliente cuyo/s nombre/s contengan el nombre especificado.
+
+Parametros de consulta:
+"customerName", tipo:string (Obligatorio) - Nombre de cliente.
+
+La respuesta de este EndPoint contiene una lista de objetos que cada uno representa un cliente. Cada objeto contiene los siguentes campos:
+
+"CustomerId", tipo: int - Identificador del cliente.
+"Names", tipo: string - Nombre/s del cliente.
+"Surnames", tipo: string - Apellido/s del cliente.
+"Birthday", tipo: datetime - Fecha de nacimiento del cliente.
+"CUIT", tipo: string - CUIT del cliente.
+"Address", tipo: string - Direccion del cliente.
+"Cellphone", tipo: string - Numero de celular del cliente.
+"Email", tipo: string - Direccion de email del cliente.
+
+Tipos de respuestas: Status200Ok
+
+
+4-Crear registros nuevos
+
+EndPoint: POST /Customer/Insert
+
+Este EndPoint crea un nuevo cliente.
+
+El body de la consulta debe contener los siguientes campos:
+
+"Names", tipo: string (Obligatorio) - Nombre/s del cliente.
+"Surnames", tipo: string (Obligatorio) - Apellido/s del cliente.
+"Birthday", tipo: datetime (Obligatorio) - Fecha de nacimiento del cliente.
+"CUIT", tipo: string (Obligatorio) - CUIT del cliente.
+"Address", tipo: string (Obligatorio) - Direccion del cliente.
+"Cellphone", tipo: string (Obligatorio) - Numero de celular del cliente.
+"Email", tipo: string (Obligatorio) - Direccion de email del cliente.
+
+Si la creacion del cliente fue exitosa, la API devuelve una respuesta con codigo de estado Status200Ok. En caso de no haberse creado el cliente, la API devuelve
+una respuesta con codigo de estado Status400BadRequest.
+
+Tipos de respuestas: Status200Ok/Status400BadRequest
+
+5-Actualizar Registros
+
+EndPoint: PUT /Customer/Update
+
+Este EndPoint actualiza cliente existente.
+
+El body de la consulta debe contener los siguientes campos:
+
+"CustomerId", tipo: int (Obligatorio) - Identificador del cliente.
+"Names", tipo: string (Obligatorio) - Nombre/s del cliente.
+"Surnames", tipo: string (Obligatorio) - Apellido/s del cliente.
+"Birthday", tipo: datetime (Obligatorio) - Fecha de nacimiento del cliente.
+"CUIT", tipo: string (Obligatorio) - CUIT del cliente.
+"Address", tipo: string (Obligatorio) - Direccion del cliente.
+"Cellphone", tipo: string (Obligatorio) - Numero de celular del cliente.
+"Email", tipo: string (Obligatorio) - Direccion de email del cliente.
+
+Si la actualizacion del cliente fue exitosa, la API devuelve una respuesta con codigo de estado Status200Ok. En caso de no haberse actualizado el cliente, la API devuelve
+una respuesta con codigo de estado Status400BadRequest.
+
+Tipos de respuestas: Status200Ok/Status400BadRequest
+
+6-Eliminar Registros
+
+EndPoint: DELETE /Customer/Delete?customerId=5
+
+Este EndPoint elimina un cliente existente.
+
+Parametros de consulta:
+"customerId", tipo:int (Obligatorio) - Identificador de cliente.
+
+Si la eliminacion del cliente fue exitosa, la API devuelve una respuesta con codigo de estado Status200Ok. En caso de no haberse eliminado el cliente, la API devuelve
+una respuesta con codigo de estado Status400BadRequest.
+
+Tipos de respuestas: Status200Ok/Status400BadRequest
